@@ -4,9 +4,17 @@ dependency:
   options:
     role-file: requirements.yml
 driver:
-  name: delegated
+  name: docker
+lint: |
+  set -e
+  yamllint .
+  ansible-lint .
 platforms:
   - name: instance
+    image: geerlingguy/docker-ubuntu2004-ansible:latest
+    command_handling: correct
+    privileged: false
+    pre_build_image: true
 provisioner:
   name: ansible
 verifier:

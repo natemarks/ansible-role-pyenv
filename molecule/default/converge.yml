@@ -1,7 +1,12 @@
 ---
 - name: Converge
   hosts: all
-  tasks:
-    - name: "Include ansible-role-pyenv"
-      include_role:
-        name: "ansible-role-pyenv"
+
+  pre_tasks:
+    - name: Update apt cache.
+      apt: update_cache=true cache_valid_time=600
+      when: ansible_os_family == 'Debian'
+      changed_when: false
+
+  roles:
+    - role: natemarks.pyenv
