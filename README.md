@@ -1,12 +1,7 @@
 Role Name
 =========
 
-A brief description of the role goes here.
-
-Requirements
-------------
-
-Any pre-requisites that may not be covered by Ansible itself or the role should be mentioned here. For instance, if the role uses the EC2 module, it may be a good idea to mention in this section that the boto package is required.
+Installs pyenv, placing the shell source script in ~/commonrc.d
 
 Role Variables
 --------------
@@ -16,21 +11,32 @@ A description of the settable variables for this role should go here, including 
 Dependencies
 ------------
 
-A list of other roles hosted on Galaxy should go here, plus any details in regards to parameters that may need to be set for other roles, or variables that are used from other roles.
+Requires the bash config that sets up the commonrc.d  scripts to be sourced
+when the shell starts:
+```bash
+ansible-galaxy install git+https://github.com/natemarks/ansible-role-bash.git,v0.0.21
+# OR
+ansible-galaxy install git+https://github.com/natemarks/ansible-role-bash.git,main
+```
 
 Example Playbook
 ----------------
+```yaml
+---
+- name: Configure pyenv
+  become: false
+  hosts: localhost
+  gather_facts: true
+  connection: local
+  roles:
+    - ansible-role-pyenv
 
-Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:
-
-    - hosts: servers
-      roles:
-         - { role: username.rolename, x: 42 }
+```
 
 License
 -------
 
-BSD
+MIT
 
 Author Information
 ------------------
