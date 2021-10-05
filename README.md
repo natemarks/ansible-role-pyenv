@@ -1,4 +1,4 @@
-Role Name
+ansible-role-pyenv
 =========
 
 Installs pyenv, placing the shell source script in ~/commonrc.d
