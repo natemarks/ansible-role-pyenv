@@ -1,0 +1,5 @@
+# requirements.yml
+---
+- name: ansible-role-bash
+  src: https://github.com/natemarks/ansible-role-bash
+  version: v0.0.21
