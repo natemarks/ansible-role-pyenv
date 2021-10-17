@@ -1,2 +1,33 @@
 ---
-# tasks file for ansible-role-pyenv
+- name: Install packages required by pyenv to install python
+  become: true
+  apt:
+    pkg:
+      - git
+      - make
+      - build-essential
+      - libssl-dev
+      - zlib1g-dev
+      - libbz2-dev
+      - libreadline-dev
+      - libsqlite3-dev
+      - wget
+      - curl
+      - llvm
+      - libncurses5-dev
+      - xz-utils
+      - tk-dev
+      - fonts-powerline
+
+- name: Clone pyenv to HOME/.pyenv
+  ansible.builtin.git:
+    repo: https://github.com/pyenv/pyenv.git
+    dest: '~/.pyenv'
+    version: v2.0.7
+
+- name: Deploy HOME/commonrc.d/pyenv-pipenv.sh
+  ansible.builtin.template:
+    src: templates/pyenv-pipenv.sh
+    dest: '~/commonrc.d/pyenv-pipenv.sh'
+    mode: '0644'
+    backup: true
