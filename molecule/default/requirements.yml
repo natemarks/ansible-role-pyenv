@@ -2,4 +2,4 @@
 ---
 - name: natemarks.bashconfig
   src: https://github.com/natemarks/ansible-role-bash
-  version: v0.0.35
+  # version: v0.0.35

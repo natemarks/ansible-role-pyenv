@@ -19,6 +19,10 @@
       - tk-dev
       - fonts-powerline
 
+- name: run the natemarks.bashconfig role
+  include_role:
+    name: natemarks.bashconfig
+
 - name: Clone pyenv to HOME/.pyenv
   ansible.builtin.git:
     repo: https://github.com/pyenv/pyenv.git

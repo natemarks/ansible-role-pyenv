@@ -32,6 +32,7 @@ molecule-test: ## Run molecule
 	( \
 	   . .venv/bin/activate; \
 	   pip install ansible ansible-lint molecule[docker]; \
+		 ansible-galaxy install -r molecule/default/requirements.yml; \
 	   molecule test; \
     )
 
